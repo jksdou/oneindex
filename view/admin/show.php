@@ -15,7 +15,7 @@
 		<?php endforeach;?>
 
 	   <button type="submit" class="mdui-btn mdui-color-theme-accent mdui-ripple mdui-float-right">
-	   	<i class="mdui-icon material-icons">&#xe161;</i> 保存
+	   	<i class="mdui-icon material-icons">save</i> 保存
 	   </button>
 	</form>
 </div>

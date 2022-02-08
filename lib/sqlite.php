@@ -106,7 +106,7 @@ class sqlite implements \Countable
     private function createTable()
     {
         $stmt = 'CREATE TABLE IF NOT EXISTS "' . $this->name . '"';
-        $stmt.= '(key TEXT PRIMARY KEY, value TEXT);';
+        $stmt .= '(key TEXT PRIMARY KEY, value TEXT);';
         $this->db->exec($stmt);
     }
 }
