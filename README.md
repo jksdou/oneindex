@@ -24,7 +24,7 @@ Onedrive Directory Index
 
 ## 配置：
 
-<img width="658" alt="image" src="https://raw.githubusercontent.com/donwa/oneindex/files/images/install.gif">
+<img width="658" alt="image" src="https://raw.githubusercontent.com/doudoudzj/oneindex/files/images/install.gif">
 
 ### 计划任务  
 
@@ -46,7 +46,7 @@ Onedrive Directory Index
 
 `README.md`、`HEAD.md` 、 `.password`特殊文件使用
 
-可以参考[https://github.com/donwa/oneindex/tree/files](https://github.com/donwa/oneindex/tree/files)
+可以参考[https://github.com/doudoudzj/oneindex/tree/files](https://github.com/doudoudzj/oneindex/tree/files)
 
 **在文件夹底部添加说明:**
 
