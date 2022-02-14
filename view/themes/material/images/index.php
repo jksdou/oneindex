@@ -3,8 +3,10 @@
 <?php view::begin('content'); ?>
 
 <div class="mdui-container-fluid">
-    <div class="nexmoe-item" style="padding: 100px!important;">
-        <div class="mdui-typo-display-3-opacity" style="text-align:center;">Images</div>
+    <div class="mdui-col-md-6 mdui-col-sm-6 mdui-center" style="float: none;">
+        <div class="mdui-text-center">
+            <h4 class="mdui-typo-display-3-opacity">Images</h4>
+        </div>
         <form action="" method="post" enctype="multipart/form-data">
             <input class="mdui-center" type="file" style="margin: 50px 0;" name="file" />
             <div class="mdui-row-xs-3">

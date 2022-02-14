@@ -21,8 +21,30 @@
             </span>
             <a href="<?php echo ROOT_URL; ?>admin" class="mdui-typo-headline mdui-hidden-xs">OneIndex</a>
             <div class="mdui-toolbar-spacer"></div>
-            <a href="<?php echo ROOT_URL_PATH; ?>" target="_blank">首页</a>
-            <a href="<?php echo ROOT_URL; ?>admin/logout"><i class="mdui-icon material-icons">exit_to_app</i> 登出</a>
+            <span class="mdui-btn mdui-btn-icon mdui-ripple mdui-ripple-white" id="dark_toggle_btn" mdui-tooltip="{content: '切换为亮色模式'}" onclick="darkmode_toggle()">
+                <i class="mdui-icon material-icons" id="dark_toggle_icon">brightness_high</i>
+            </span>
+            <span class="mdui-btn mdui-btn-icon mdui-ripple mdui-ripple-white" mdui-menu="{target: '#admin-menu'}">
+                <i class="mdui-icon material-icons">more_vert</i>
+            </span>
+            <ul id="admin-menu" class="mdui-menu">
+                <li class="mdui-menu-item">
+                    <a href="<?php echo ROOT_URL_PATH; ?>" class="mdui-ripple" target="_blank"><i class="mdui-icon material-icons">home</i> 首页</a>
+                </li>
+                <li class="mdui-divider"></li>
+                <?php if (is_login()) : ?>
+                    <li class="mdui-menu-item">
+                        <a href="<?php echo ROOT_URL; ?>admin/setpass" class="mdui-ripple"><i class="mdui-icon material-icons">security</i> 密码修改</a>
+                    </li>
+                    <li class="mdui-menu-item">
+                        <a href="<?php echo ROOT_URL; ?>admin/logout" class="mdui-ripple"><i class="mdui-icon material-icons">exit_to_app</i> 退出登录</a>
+                    </li>
+                <?php else : ?>
+                    <li class="mdui-menu-item">
+                        <a href="<?php echo ROOT_URL; ?>admin/login" class="mdui-ripple"><i class="mdui-icon material-icons">account_circle</i> 登录</a>
+                    </li>
+                <?php endif; ?>
+            </ul>
         </div>
     </header>
     <div class="mdui-drawer" id="main-drawer">
@@ -31,70 +53,89 @@
             <div class="mdui-divider"></div>
         </div>
         <div class="mdui-list">
-            <a href="<?php echo ROOT_URL; ?>admin/" class="mdui-list-item">
-                <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-green">home</i>
-                <div class="mdui-list-item-content">后台首页</div>
-            </a>
-            <a href="<?php echo ROOT_URL; ?>admin" class="mdui-list-item">
-                <i class="mdui-list-item-icon mdui-icon material-icons">settings</i>
-                <div class="mdui-list-item-content">基本设置</div>
-            </a>
+            <?php if (is_login()) : ?>
+                <a href="<?php echo ROOT_URL; ?>admin/" class="mdui-list-item">
+                    <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-green">home</i>
+                    <div class="mdui-list-item-content">后台首页</div>
+                </a>
+                <a href="<?php echo ROOT_URL; ?>admin" class="mdui-list-item">
+                    <i class="mdui-list-item-icon mdui-icon material-icons">settings</i>
+                    <div class="mdui-list-item-content">基本设置</div>
+                </a>
 
-            <a href="<?php echo ROOT_URL; ?>admin/cache" class="mdui-list-item">
-                <i class="mdui-list-item-icon mdui-icon material-icons">layers</i>
-                <div class="mdui-list-item-content">页面缓存</div>
-            </a>
+                <a href="<?php echo ROOT_URL; ?>admin/cache" class="mdui-list-item">
+                    <i class="mdui-list-item-icon mdui-icon material-icons">layers</i>
+                    <div class="mdui-list-item-content">页面缓存</div>
+                </a>
 
-            <a href="<?php echo ROOT_URL; ?>admin/show" class="mdui-list-item">
-                <i class="mdui-list-item-icon mdui-icon material-icons">blur_on</i>
-                <div class="mdui-list-item-content">文件展示设置</div>
-            </a>
-            <a href="<?php echo ROOT_URL; ?>admin/images" class="mdui-list-item">
-                <i class="mdui-list-item-icon mdui-icon material-icons">photo</i>
-                <div class="mdui-list-item-content">图床设置</div>
-            </a>
+                <a href="<?php echo ROOT_URL; ?>admin/show" class="mdui-list-item">
+                    <i class="mdui-list-item-icon mdui-icon material-icons">blur_on</i>
+                    <div class="mdui-list-item-content">文件展示设置</div>
+                </a>
+                <a href="<?php echo ROOT_URL; ?>admin/images" class="mdui-list-item">
+                    <i class="mdui-list-item-icon mdui-icon material-icons">photo</i>
+                    <div class="mdui-list-item-content">图床设置</div>
+                </a>
 
-            <a href="<?php echo ROOT_URL; ?>admin/upload" class="mdui-list-item">
-                <i class="mdui-list-item-icon mdui-icon material-icons">file_upload</i>
-                <div class="mdui-list-item-content">网站上传</div>
-            </a>
+                <a href="<?php echo ROOT_URL; ?>admin/upload" class="mdui-list-item">
+                    <i class="mdui-list-item-icon mdui-icon material-icons">file_upload</i>
+                    <div class="mdui-list-item-content">网站上传</div>
+                </a>
 
-            <a href="<?php echo ROOT_URL; ?>admin/offline" class="mdui-list-item">
-                <i class="mdui-list-item-icon mdui-icon material-icons">cloud_upload</i>
-                <div class="mdui-list-item-content">上传设置</div>
-            </a>
+                <a href="<?php echo ROOT_URL; ?>admin/offline" class="mdui-list-item">
+                    <i class="mdui-list-item-icon mdui-icon material-icons">cloud_upload</i>
+                    <div class="mdui-list-item-content">上传设置</div>
+                </a>
 
-            <a href="<?php echo ROOT_URL; ?>admin/setpass" class="mdui-list-item">
-                <i class="mdui-list-item-icon mdui-icon material-icons">https</i>
-                <div class="mdui-list-item-content">密码修改</div>
-            </a>
-
-            <a href="https://onedrive.live.com/" class="mdui-list-item" target="_blank">
-                <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-blue">cloud</i>
-                <div class="mdui-list-item-content">OneDrive</div>
-            </a>
+                <a href="<?php echo ROOT_URL; ?>admin/setpass" class="mdui-list-item">
+                    <i class="mdui-list-item-icon mdui-icon material-icons">security</i>
+                    <div class="mdui-list-item-content">密码修改</div>
+                </a>
+                <div class="mdui-divider"></div>
+                <a href="<?php echo ROOT_URL; ?>admin/logout" class="mdui-list-item">
+                    <i class="mdui-list-item-icon mdui-icon material-icons">exit_to_app</i>
+                    <div class="mdui-list-item-content">退出登录</div>
+                </a>
+            <?php else : ?>
+                <a href="<?php echo ROOT_URL_PATH; ?>" class="mdui-list-item">
+                    <i class="mdui-list-item-icon mdui-icon material-icons">home</i>
+                    <div class="mdui-list-item-content">首页</div>
+                </a>
+                <div class="mdui-divider"></div>
+                <a href="<?php echo ROOT_URL; ?>admin/login" class="mdui-list-item">
+                    <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-blue">account_circle</i>
+                    <div class="mdui-list-item-content">登录</div>
+                </a>
+            <?php endif; ?>
 
             <div class="mdui-divider"></div>
-
-            <a href="<?php echo ROOT_URL; ?>admin/logout" class="mdui-list-item">
-                <i class="mdui-list-item-icon mdui-icon material-icons">exit_to_app</i>
-                <div class="mdui-list-item-content">退出登录</div>
+            <a href="https://onedrive.live.com/" class="mdui-list-item" target="_blank">
+                <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-blue">cloud</i>
+                <div class="mdui-list-item-content">微软 OneDrive</div>
             </a>
         </div>
     </div>
 
-    <a id="anchor-top"></a>
+    <!-- <a id="anchor-top"></a> -->
 
     <div class="mdui-container">
         <?php view::section('content'); ?>
     </div>
+
     <div style="height: 20px;"></div>
-    <script>
-        $("a[href='<?php echo '?' . (route::get_uri()); ?>']").addClass("mdui-text-color-blue");
-        // 消息提示
-        <?php echo (isset($message) && !empty($message)) ? "mdui.snackbar({position: 'right-top', message: '{$message}'});" : ''; ?>
-    </script>
+
     <script src="./statics/common/js/darkmode.js"></script>
+
+    <?php if (isset($message) && !empty($message)) : ?>
+        <script>
+            // 消息提示
+            mdui.snackbar({
+                position: "right-top",
+                message: "<?php echo $message; ?>"
+            });
+        </script>
+    <?php endif; ?>
+
 </body>
 
 </html>

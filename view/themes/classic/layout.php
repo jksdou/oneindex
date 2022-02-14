@@ -51,12 +51,9 @@
             <a href="javascript:;" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">refresh</i></a>
         </div>
     </header>
-
     <div class="mdui-container">
         <?php view::section('content'); ?>
     </div>
-
-
 </body>
 
 </html>

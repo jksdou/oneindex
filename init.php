@@ -35,13 +35,13 @@ if (!function_exists('config')) {
         $file = empty($file) ? 'base' : $file;
 
         $file_name = CONFIG_PATH . $file . '.php';
-        //读取配置
+        // 读取配置
         if (empty($configs[$file]) and file_exists($file_name)) {
             $configs[$file] = @include $file_name;
         }
         if (func_num_args() === 2) {
             $value = func_get_arg(1);
-            //写入配置
+            // 写入配置
             if (!empty($key)) {
                 $configs[$file] = (array) $configs[$file];
                 if (is_null($value)) {
@@ -59,7 +59,7 @@ if (!function_exists('config')) {
             }
             file_put_contents($file_name, "<?php return " . var_export($configs[$file], true) . ";", FILE_FLAGS);
         } else {
-            //返回结果
+            // 返回结果
             if (!empty($key)) {
                 return $configs[$file][$key];
             }
@@ -154,9 +154,20 @@ function get_absolute_path($path)
     return str_replace('//', '/', '/' . implode('/', $absolutes) . '/');
 }
 
+// 是否登陆
 function is_login()
 {
     if ($_COOKIE['admin'] == md5(config('password') . config('refresh_token'))) {
+        return true;
+    }
+    return false;
+}
+
+// 图床是否开放
+function is_images_public()
+{
+    $is_images_public = config('images@base')['public'];
+    if ($is_images_public) {
         return true;
     }
     return false;

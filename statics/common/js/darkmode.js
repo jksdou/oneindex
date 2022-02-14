@@ -4,13 +4,19 @@ function cookie_set(a, b) {
     (t = new Date).setTime(t.getTime() + 6048e5)
     document.cookie = a + "=" + b + "; expires=" + t.toGMTString() + "; path=/;"
 }
-function cookie_get(b) {
-    for (var c, f = b + "=", g = document.cookie.split(";"), h = 0; h < g.length; h++)
-        if (c = g[h].trim(), 0 == c.indexOf(f)) {
-            return c.substring(f.length, c.length);
+
+function cookie_get(k) {
+    var name = k + '='
+    var ca = document.cookie.split(';')
+    for (var i = 0; i < ca.length; i++) {
+        var c = ca[i].trim()
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length)
         }
-    return !1
+    }
+    return false
 }
+
 function light() {
     cookie_set("DARK_STATUS", "0");
     $("#dark_toggle_icon").html("brightness_4");

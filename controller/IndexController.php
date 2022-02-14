@@ -9,21 +9,21 @@ class IndexController
 
     function __construct()
     {
-        //获取路径和文件名
+        // 获取路径和文件名
         $paths = explode('/', rawurldecode($_GET['path']));
         if (substr($_SERVER['REQUEST_URI'], -1) != '/') {
             $this->name = array_pop($paths);
         }
         $this->url_path = get_absolute_path(join('/', $paths));
         $this->path = get_absolute_path(config('onedrive_root') . $this->url_path);
-        //获取文件夹下所有元素
+        // 获取文件夹下所有元素
         $this->items = $this->items($this->path);
     }
 
 
     function index()
     {
-        //是否404
+        // 是否404
         $this->is404();
 
         $this->is_password();
@@ -243,9 +243,7 @@ class IndexController
         return $content;
     }
 
-
-
-    //时候404
+    // 是否 404
     function is404()
     {
         if (!empty($this->items[$this->name]) || (empty($this->name) && is_array($this->items))) {

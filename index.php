@@ -61,9 +61,10 @@ define('VIEW_PATH', ROOT . 'view/themes/' . (config('style') ? config('style') :
  */
 $images = config('images@base');
 
+// 图床路由
+route::any('/user/images', 'ImagesController@index');
+
 if (is_login() || $images['public']) {
-    // 图床路由
-    route::any('/user/images', 'ImagesController@index');
     // 首页默认为图床
     if ($images['home']) {
         route::any('/', 'ImagesController@index');

@@ -13,8 +13,8 @@
             <tr>
                 <th class="file-name">Name</th>
                 <th class="file-size">Size</th>
-                <th class="file-date-created">Date Created</th>
                 <th class="file-date-modified">Date Modified</th>
+                <th class="file-date-created">Date Created</th>
             </tr>
 <?php if($path != '/'):?>
             <tr>
@@ -23,24 +23,23 @@
                 </td>
                 <td class="file-size"></td>
                 <td class="file-date-modified"></td>
+                <td class="file-date-created"></td>
             </tr>
 <?php endif;?>
-<?php 
-// print_r($items);
-foreach((array)$items as $item):?>
+<?php foreach((array)$items as $item):?>
 <?php if(!empty($item['folder'])):?>
             <tr>
                 <td class="file-name"><a class="icon icon-dir" href="<?php echo get_absolute_path($root.$path.rawurlencode($item['name']));?>"><?php echo $item['name'];?>/</a></td>
                 <td class="file-size"><?php echo onedrive::human_filesize($item['size']);?></td>
-                <td class="file-date-modified"><?php echo date("Y-m-d H:i:s", $item['createdDateTime']);?></td>
                 <td class="file-date-modified"><?php echo date("Y-m-d H:i:s", $item['lastModifiedDateTime']);?></td>
+                <td class="file-date-created"><?php echo date("Y-m-d H:i:s", $item['createdDateTime']);?></td>
             </tr>
 <?php else:?>
             <tr>
                 <td class="file-name"><a class="icon icon-file" href="<?php echo get_absolute_path($root.$path).rawurlencode($item['name']);?>"><?php echo $item['name'];?></a></td>
                 <td class="file-size"><?php echo onedrive::human_filesize($item['size']);?></td>
-                <td class="file-date-modified"><?php echo date("Y-m-d H:i:s", $item['createdDateTime']);?></td>
                 <td class="file-date-modified"><?php echo date("Y-m-d H:i:s", $item['lastModifiedDateTime']);?></td>
+                <td class="file-date-created"><?php echo date("Y-m-d H:i:s", $item['createdDateTime']);?></td>
             </tr>
 <?php endif;?>
 <?php endforeach;?>

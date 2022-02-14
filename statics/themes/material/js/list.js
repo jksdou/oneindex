@@ -448,21 +448,26 @@ function copy() {
     document.getElementById('pastebtn').style.display = ''
     document.getElementById('cutbtn').style.display = 'none'
 }
-//点击剪切
+
+// 点击剪切
 function cut() {
     document.cookie = 'cutitems=' + JSON.stringify(check_val)
     document.getElementById('pastebtn').style.display = ''
     document.getElementById('cutbtn').style.display = 'none'
     document.getElementById('copybtn').style.display = 'none'
 }
-//判断cookie是否有复制和粘贴
+
+// 判断cookie是否有复制和粘贴
 var pastebtn = document.getElementById('pastebtn')
-if (!getCookie('cutitems') && !getCookie('copyitems')) {
-    pastebtn.style.display = 'none'
-} else {
-    pastebtn.style.display = ''
+if (pastebtn) {
+    if (!getCookie('cutitems') && !getCookie('copyitems')) {
+        pastebtn.style.display = 'none'
+    } else {
+        pastebtn.style.display = ''
+    }
 }
-//点击粘贴
+
+// 点击粘贴
 function paste() {
     $('#pending').css('display', null)
     if (getCookie('cutitems')) {
@@ -549,7 +554,8 @@ function paste() {
         }
     }
 }
-//获取cookie
+
+// 获取cookie
 function getCookie(cname) {
     var name = cname + '='
     var ca = document.cookie.split(';')
@@ -561,7 +567,8 @@ function getCookie(cname) {
     }
     return false
 }
-//获取新的dom
+
+// 获取新的dom
 function getListDom(item) {
     var $domstr = ''
     var path = item.parentReference.path.replace('/drive/root:', '?') + '/' + item.name

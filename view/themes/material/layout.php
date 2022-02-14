@@ -20,13 +20,16 @@
             width: 100%;
             line-height: 48px
         }
+
         .file-list-page .mdui-list>.th {
             background-color: initial
         }
+
         .file-list-toolbar {
             padding-top: 10px;
             padding-bottom: 10px;
         }
+
         @media screen and (max-width:980px) {
             .mdui-container {
                 width: 100% !important;
@@ -36,7 +39,7 @@
     </style>
 </head>
 
-<body class="mdui-drawer-body-left mdui-appbar-with-toolbar mdui-theme-primary-indigo mdui-theme-accent-blue">
+<body class="mdui-drawer-body-left mdui-appbar-with-toolbar mdui-theme-primary-teal mdui-theme-accent-blue">
     <header class="mdui-appbar mdui-appbar-fixed">
         <div class="mdui-toolbar mdui-color-theme">
             <span class="mdui-btn mdui-btn-icon mdui-ripple mdui-ripple-white" mdui-drawer="{target: '#menu-drawer', swipe: true}">
@@ -60,6 +63,10 @@
                 <i class="mdui-icon material-icons">more_vert</i>
             </span>
             <ul id="login-menu" class="mdui-menu">
+                <li class="mdui-menu-item">
+                    <a href="<?php echo ROOT_URL_PATH; ?>" class="mdui-ripple"><i class="mdui-icon material-icons">home</i> 首页</a>
+                </li>
+                <li class="mdui-divider"></li>
                 <?php if (is_login()) : ?>
                     <li class="mdui-menu-item">
                         <a href="<?php echo ROOT_URL; ?>admin/logout" class="mdui-ripple"><i class="mdui-icon material-icons">exit_to_app</i> 退出登录</a>
@@ -72,7 +79,6 @@
                         <a href="<?php echo ROOT_URL; ?>admin/logout" class="mdui-ripple"><i class="mdui-icon material-icons">person_add</i> 注册</a>
                     </li>
                 <?php endif; ?>
-                <li class="mdui-divider"></li>
             </ul>
         </div>
     </header>
@@ -83,24 +89,18 @@
             <div class="mdui-divider"></div>
         </div>
         <div class="mdui-list">
-            <?php if (is_login()) : ?>
+            <?php if (is_login() || is_images_public()) : ?>
                 <a href="<?php echo ROOT_URL; ?>user/images" class="mdui-list-item">
                     <i class="mdui-list-item-icon mdui-icon material-icons">photo</i>
                     <div class="mdui-list-item-content">图床</div>
                 </a>
+            <?php endif; ?>
+            <?php if (is_login()) : ?>
                 <a href="<?php echo ROOT_URL; ?>offline" class="mdui-list-item">
                     <i class="mdui-list-item-icon mdui-icon material-icons">cloud_upload</i>
                     <div class="mdui-list-item-content">离线下载</div>
                 </a>
-
                 <div class="mdui-divider"></div>
-                <a href="https://onedrive.live.com/" class="mdui-list-item" target="_blank">
-                    <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-blue">cloud</i>
-                    <div class="mdui-list-item-content">OneDrive</div>
-                </a>
-
-                <div class="mdui-divider"></div>
-
                 <a href="<?php echo ROOT_URL; ?>admin/logout" class="mdui-list-item">
                     <i class="mdui-list-item-icon mdui-icon material-icons">exit_to_app</i>
                     <div class="mdui-list-item-content">退出登录</div>
@@ -115,6 +115,11 @@
                     <div class="mdui-list-item-content">注册</div>
                 </a> -->
             <?php endif; ?>
+            <div class="mdui-divider"></div>
+            <a href="https://onedrive.live.com/" class="mdui-list-item" target="_blank">
+                <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-blue">cloud</i>
+                <div class="mdui-list-item-content">微软 OneDrive</div>
+            </a>
         </div>
     </div>
 
