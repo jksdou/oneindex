@@ -22,7 +22,7 @@
             <a href="<?php echo ROOT_URL; ?>admin" class="mdui-typo-headline mdui-hidden-xs">OneIndex</a>
             <div class="mdui-toolbar-spacer"></div>
             <a href="<?php echo ROOT_URL_PATH; ?>" target="_blank">首页</a>
-            <a href="<?php echo ROOT_URL; ?>admin/logout"><i class="mdui-icon material-icons">power_settings_new</i> 登出</a>
+            <a href="<?php echo ROOT_URL; ?>admin/logout"><i class="mdui-icon material-icons">exit_to_app</i> 登出</a>
         </div>
     </header>
     <div class="mdui-drawer" id="main-drawer">
@@ -77,7 +77,7 @@
             <div class="mdui-divider"></div>
 
             <a href="<?php echo ROOT_URL; ?>admin/logout" class="mdui-list-item">
-                <i class="mdui-list-item-icon mdui-icon material-icons">power_settings_new</i>
+                <i class="mdui-list-item-icon mdui-icon material-icons">exit_to_app</i>
                 <div class="mdui-list-item-content">退出登录</div>
             </a>
         </div>
@@ -94,6 +94,7 @@
         // 消息提示
         <?php echo (isset($message) && !empty($message)) ? "mdui.snackbar({position: 'right-top', message: '{$message}'});" : ''; ?>
     </script>
+    <script src="./statics/common/js/darkmode.js"></script>
 </body>
 
 </html>
