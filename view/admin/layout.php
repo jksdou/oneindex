@@ -109,9 +109,9 @@
             <?php endif; ?>
 
             <div class="mdui-divider"></div>
-            <a href="https://onedrive.live.com/" class="mdui-list-item" target="_blank">
+            <a href="https://store.lizhi.io/site/products/id/65?cid=ji6bagm9" class="mdui-list-item" target="_blank">
                 <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-blue">cloud</i>
-                <div class="mdui-list-item-content">微软 OneDrive</div>
+                <div class="mdui-list-item-content">Microsoft 365</div>
             </a>
         </div>
     </div>
