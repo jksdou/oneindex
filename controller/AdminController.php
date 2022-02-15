@@ -14,15 +14,15 @@ class AdminController
         'root_path' => '?/',
         'show' => array(
             'stream' => ['txt'],
-            'image' => ['bmp', 'jpg', 'jpeg', 'png', 'gif'],
+            'image' => ['jpg', 'jpeg', 'png', 'gif', 'bmp'],
             'video5' => ['mp4', 'webm', 'mkv'],
             'video' => [],
             'video2' => ['avi', 'mpg', 'mpeg', 'rm', 'rmvb', 'mov', 'wmv', 'asf', 'ts', 'flv'],
             'audio' => ['ogg', 'mp3', 'wav'],
-            'code' => ['html', 'htm', 'php', 'css', 'go', 'java', 'js', 'json', 'txt', 'sh', 'md'],
+            'code' => ['txt', 'html', 'htm', 'xhtml', 'css', 'js', 'json', 'ts', 'php', 'c', 'h', 'cpp', 'py', 'go', 'java', 'sh', 'md', 'ini', 'sql', 'cs', 'tcl', 'env', 'conf', 'prettierrc', 'editorconfig', 'gitignore'],
             'doc' => ['csv', 'doc', 'docx', 'odp', 'ods', 'odt', 'pot', 'potm', 'potx', 'pps', 'ppsx', 'ppsxm', 'ppt', 'pptm', 'pptx', 'rtf', 'xls', 'xlsx']
         ),
-        'images' => ['home' => false, 'public' => false, 'exts' => ['jpg', 'png', 'gif', 'bmp']],
+        'images' => ['home' => false, 'public' => false, 'exts' => ['jpg', 'jpeg', 'png', 'gif', 'bmp']],
         'offline' => array(
             'offline' => false,
             'online' => false,

@@ -75,9 +75,9 @@
                     <li class="mdui-menu-item">
                         <a href="<?php echo ROOT_URL; ?>admin/login" class="mdui-ripple"><i class="mdui-icon material-icons">account_circle</i> 登录</a>
                     </li>
-                    <li class="mdui-menu-item">
+                    <!-- <li class="mdui-menu-item">
                         <a href="<?php echo ROOT_URL; ?>admin/logout" class="mdui-ripple"><i class="mdui-icon material-icons">person_add</i> 注册</a>
-                    </li>
+                    </li> -->
                 <?php endif; ?>
             </ul>
         </div>
@@ -110,14 +110,14 @@
                     <i class="mdui-list-item-icon mdui-icon material-icons">account_circle</i>
                     <div class="mdui-list-item-content">登录</div>
                 </a>
-                <!-- <a href="<?php echo ROOT_URL; ?>admin/reg" class="mdui-list-item">
-                    <i class="mdui-list-item-icon mdui-icon material-icons">person_add</i>
-                    <div class="mdui-list-item-content">注册</div>
-                </a> -->
             <?php endif; ?>
             <div class="mdui-divider"></div>
+            <a href="https://onedrive.live.com/" class="mdui-list-item" target="_blank">
+                <i class="mdui-list-item-icon mdui-icon material-icons">cloud</i>
+                <div class="mdui-list-item-content">登陆 OneDrive</div>
+            </a>
             <a href="https://store.lizhi.io/site/products/id/65?cid=ji6bagm9" class="mdui-list-item" target="_blank">
-                <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-blue">cloud</i>
+                <i class="mdui-list-item-icon mdui-icon material-icons">shopping_cart</i>
                 <div class="mdui-list-item-content">Microsoft 365</div>
             </a>
         </div>

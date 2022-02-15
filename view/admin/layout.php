@@ -31,11 +31,11 @@
                 <li class="mdui-menu-item">
                     <a href="<?php echo ROOT_URL_PATH; ?>" class="mdui-ripple" target="_blank"><i class="mdui-icon material-icons">home</i> 首页</a>
                 </li>
+                <li class="mdui-menu-item">
+                    <a href="<?php echo ROOT_URL; ?>admin/setpass" class="mdui-ripple"><i class="mdui-icon material-icons">security</i> 密码修改</a>
+                </li>
                 <li class="mdui-divider"></li>
                 <?php if (is_login()) : ?>
-                    <li class="mdui-menu-item">
-                        <a href="<?php echo ROOT_URL; ?>admin/setpass" class="mdui-ripple"><i class="mdui-icon material-icons">security</i> 密码修改</a>
-                    </li>
                     <li class="mdui-menu-item">
                         <a href="<?php echo ROOT_URL; ?>admin/logout" class="mdui-ripple"><i class="mdui-icon material-icons">exit_to_app</i> 退出登录</a>
                     </li>
@@ -109,8 +109,12 @@
             <?php endif; ?>
 
             <div class="mdui-divider"></div>
+            <a href="https://onedrive.live.com/" class="mdui-list-item" target="_blank">
+                <i class="mdui-list-item-icon mdui-icon material-icons">cloud</i>
+                <div class="mdui-list-item-content">登陆 OneDrive</div>
+            </a>
             <a href="https://store.lizhi.io/site/products/id/65?cid=ji6bagm9" class="mdui-list-item" target="_blank">
-                <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-blue">cloud</i>
+                <i class="mdui-list-item-icon mdui-icon material-icons">shopping_cart</i>
                 <div class="mdui-list-item-content">Microsoft 365</div>
             </a>
         </div>
@@ -122,7 +126,7 @@
         <?php view::section('content'); ?>
     </div>
 
-    <div style="height: 20px;"></div>
+    <div style="height: 50px;"></div>
 
     <script src="./statics/common/js/darkmode.js"></script>
 

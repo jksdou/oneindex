@@ -1,5 +1,6 @@
 .DS_Store
-cache/cachedata.php
+/cache/
+/config/
 node_modules/
 dist/
 npm-debug.log*

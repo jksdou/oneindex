@@ -1,53 +1,61 @@
-<?php view::layout('layout')?>
-<?php 
-	function code_type($ext){
-		$code_type['html'] = 'html';
-		$code_type['htm'] = 'html';
-		$code_type['php'] = 'php';
-		$code_type['css'] = 'css';
-		$code_type['go'] = 'golang';
-		$code_type['java'] = 'java';
-		$code_type['js'] = 'javascript';
-		$code_type['json'] = 'json';
-		$code_type['txt'] = 'Text';
-		$code_type['sh'] = 'sh';
-		$code_type['md'] = 'Markdown';
-		
-		return @$code_type[$ext];
-	}
-	$language = code_type($ext);
+<?php view::layout('layout') ?>
+<?php
+function code_type($ext)
+{
+    $code_type['xhtml'] = 'xml';
+    $code_type['html'] = 'xml';
+    $code_type['htm'] = 'xml';
+    $code_type['css'] = 'css';
+    $code_type['js'] = 'javascript';
+    $code_type['ts'] = 'typescript';
+    $code_type['json'] = 'json';
+    $code_type['php'] = 'php';
+    $code_type['c'] = 'cpp';
+    $code_type['h'] = 'cpp';
+    $code_type['cpp'] = 'cpp';
+    $code_type['java'] = 'java';
+    $code_type['go'] = 'go';
+    $code_type['sql'] = 'sql';
+    $code_type['ini'] = 'ini';
+    $code_type['py'] = 'python';
+    $code_type['editorconfig'] = 'ini';
+    $code_type['prettierrc'] = 'json';
+    $code_type['eslintrc'] = 'json';
+    $code_type['txt'] = 'plaintext';
+    $code_type['env'] = 'plaintext';
+    $code_type['gitignore'] = 'plaintext';
+    $code_type['sh'] = 'bash';
+    $code_type['md'] = 'markdown';
 
-	$content = IndexController::get_content($item);
+    return @$code_type[$ext];
+}
+
+$language = code_type($ext);
+
+$content = IndexController::get_content($item);
 ?>
-<?php view::begin('content');?>
-<style type="text/css" media="screen">
-    #editor { 
-        /*height:800px;*/
-    }
-</style>
-<div class="mdui-container">
-<pre id="editor" ><?php echo htmlentities($content);?></pre>
-</div>
-<div class="mdui-textfield">
-	<label class="mdui-textfield-label">下载地址</label>
-	<input class="mdui-textfield-input" type="text" value="<?php e($url);?>"/>
-</div>
-<a href="<?php e($url);?>" class="mdui-fab mdui-fab-fixed mdui-ripple mdui-color-theme-accent"><i class="mdui-icon material-icons">file_download</i></a>
+<?php view::begin('content'); ?>
+<!-- <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/11.4.0/styles/dark.min.css"> -->
+<link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/11.4.0/styles/default.min.css">
 
-<script src="https://cdn.bootcss.com/ace/1.2.9/ace.js"></script>
-<script src="https://cdn.bootcss.com/ace/1.2.9/ext-language_tools.js"></script>
+<div class="mdui-container-fluid">
+    <pre><code class="language-<?php e($language); ?>"><?php echo htmlentities($content); ?></code></pre>
+    <div class="mdui-divider"></div>
+    <div class="mdui-textfield">
+        <label class="mdui-textfield-label">下载地址</label>
+        <input class="mdui-textfield-input" type="text" value="<?php e($url); ?>" />
+    </div>
+
+    <a href="<?php e($url); ?>" class="mdui-fab mdui-fab-fixed mdui-ripple mdui-color-theme-accent">
+        <i class="mdui-icon material-icons">file_download</i>
+    </a>
+</div>
+
+<div style="height: 50px;"></div>
+
+<script src="https://cdn.staticfile.org/highlight.js/11.4.0/highlight.min.js"></script>
 <script>
-    var editor = ace.edit("editor");
-    editor.setTheme("ace/theme/ambiance");
-    editor.setFontSize(18);
-    editor.session.setMode("ace/mode/<?php e($language);?>");
-    
-    //Autocompletion
-    editor.setOptions({
-        enableBasicAutocompletion: true,
-        enableSnippets: true,
-        enableLiveAutocompletion: true,
-        maxLines: Infinity
-    });
+    hljs.highlightAll();
 </script>
-<?php view::end('content');?>
+
+<?php view::end('content'); ?>
