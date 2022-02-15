@@ -7,6 +7,11 @@
     <meta http-equiv="Access-Control-Allow-Origin" content="*" />
     <title>OneIndex 系统管理</title>
     <link rel="stylesheet" href="https://cdn.staticfile.org/mdui/0.4.3/css/mdui.min.css">
+    <style>
+        #toolbar-admin-menu {
+            margin-top: 50px;
+        }
+    </style>
     <script src="https://cdn.staticfile.org/mdui/0.4.3/js/mdui.min.js"></script>
     <script>
         $ = mdui.JQ;
@@ -24,24 +29,24 @@
             <span class="mdui-btn mdui-btn-icon mdui-ripple mdui-ripple-white" id="dark_toggle_btn" mdui-tooltip="{content: '切换为亮色模式'}" onclick="darkmode_toggle()">
                 <i class="mdui-icon material-icons" id="dark_toggle_icon">brightness_high</i>
             </span>
-            <span class="mdui-btn mdui-btn-icon mdui-ripple mdui-ripple-white" mdui-menu="{target: '#admin-menu'}">
+            <span class="mdui-btn mdui-btn-icon mdui-ripple mdui-ripple-white" mdui-menu="{target: '#toolbar-admin-menu'}">
                 <i class="mdui-icon material-icons">more_vert</i>
             </span>
-            <ul id="admin-menu" class="mdui-menu">
+            <ul id="toolbar-admin-menu" class="mdui-menu">
                 <li class="mdui-menu-item">
-                    <a href="<?php echo ROOT_URL_PATH; ?>" class="mdui-ripple" target="_blank"><i class="mdui-icon material-icons">home</i> 首页</a>
+                    <a href="<?php echo ROOT_URL_PATH; ?>" class="mdui-ripple" target="_blank"><i class="mdui-menu-item-icon mdui-icon material-icons">home</i> 首页</a>
                 </li>
-                <li class="mdui-menu-item">
-                    <a href="<?php echo ROOT_URL; ?>admin/setpass" class="mdui-ripple"><i class="mdui-icon material-icons">security</i> 密码修改</a>
-                </li>
-                <li class="mdui-divider"></li>
                 <?php if (is_login()) : ?>
                     <li class="mdui-menu-item">
-                        <a href="<?php echo ROOT_URL; ?>admin/logout" class="mdui-ripple"><i class="mdui-icon material-icons">exit_to_app</i> 退出登录</a>
+                        <a href="<?php echo ROOT_URL; ?>admin/setpass" class="mdui-ripple"><i class="mdui-menu-item-icon mdui-icon material-icons">security</i> 密码修改</a>
+                    </li>
+                    <li class="mdui-divider"></li>
+                    <li class="mdui-menu-item">
+                        <a href="<?php echo ROOT_URL; ?>admin/logout" class="mdui-ripple"><i class="mdui-menu-item-icon mdui-icon material-icons">exit_to_app</i> 退出登录</a>
                     </li>
                 <?php else : ?>
                     <li class="mdui-menu-item">
-                        <a href="<?php echo ROOT_URL; ?>admin/login" class="mdui-ripple"><i class="mdui-icon material-icons">account_circle</i> 登录</a>
+                        <a href="<?php echo ROOT_URL; ?>admin/login" class="mdui-ripple"><i class="mdui-menu-item-icon mdui-icon material-icons">account_circle</i> 登录</a>
                     </li>
                 <?php endif; ?>
             </ul>
