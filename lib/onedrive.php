@@ -72,6 +72,7 @@ class onedrive
             if (!empty($token['refresh_token'])) {
                 $token['expires_on'] = time() + $token['expires_in'];
                 config('@token', $token);
+                config('access_token', $token['access_token']);
                 return $token['access_token'];
             }
         }
