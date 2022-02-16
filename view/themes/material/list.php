@@ -170,7 +170,7 @@ function file_ico($item)
                                     <i class="mdui-checkbox-icon"></i>
                                 </label>
                             <?php endif; ?>
-                            <a href="<?php echo get_absolute_path($root . $path) . rawurlencode($item['name']); ?>" target="_blank">
+                            <a href="<?php echo get_absolute_path($root . $path) . rawurlencode($item['name']); ?>">
                                 <div class="mdui-col-lg-7 mdui-col-md-7 mdui-col-sm-10 mdui-text-truncate">
                                     <i class="mdui-icon material-icons fileitem"><?php echo file_ico($item); ?></i>
                                     <span><?php e($item['name']); ?></span>

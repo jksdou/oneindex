@@ -72,7 +72,7 @@ if (is_login() || $images['public']) {
 }
 
 /**
- * 列目录
+ * 文件列目录
  */
 route::group(function () {
     $hotlink = config('onedrive_hotlink');
@@ -107,5 +107,14 @@ route::group(function () {
 
     return $referer;
 }, function () {
-    route::any('{path:#all}', 'IndexController@index');
+    route::get('/files', 'FilesController@index');
+    route::any('/files/{path:#all}', 'FilesController@index');
 });
+
+route::get('/download/{path:#all}', 'DownloadController@index');
+
+// 首页
+route::any('/', 'IndexController@index');
+
+// 公共
+route::any('/{path:#all}', 'IndexController@index');
