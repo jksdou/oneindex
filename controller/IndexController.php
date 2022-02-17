@@ -26,6 +26,15 @@ class IndexController
         return view::load('index')->with($data);
     }
 
+
+    function about()
+    {
+        // 是否404
+        $data['title'] = '关于';
+        $data['navs'] = [];
+        return view::load('about')->with($data);
+    }
+
     // 是否 404
     function is404()
     {

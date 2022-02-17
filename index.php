@@ -23,7 +23,7 @@ route::group(function () {
     return is_login();
 }, function () {
     route::any('/admin/', 'AdminController@settings');
-    route::get('/admin/logout', 'AdminController@logout');
+    route::any('/admin/logout', 'AdminController@logout');
     route::any('/admin/cache', 'AdminController@cache');
     route::any('/admin/show', 'AdminController@show');
     route::any('/admin/setpass', 'AdminController@setpass');
@@ -109,12 +109,14 @@ route::group(function () {
 }, function () {
     route::get('/files', 'FilesController@index');
     route::any('/files/{path:#all}', 'FilesController@index');
+    // 下载文件
+    route::get('/download/{path:#all}', 'FilesController@download');
 });
 
-route::get('/download/{path:#all}', 'DownloadController@index');
-
 // 首页
-route::any('/', 'IndexController@index');
+route::get('/', 'IndexController@index');
+// 关于
+route::get('/about', 'IndexController@about');
 
 // 公共
 route::any('/{path:#all}', 'IndexController@index');

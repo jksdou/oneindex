@@ -32,7 +32,7 @@ function code_type($ext)
 
 $language = code_type($ext);
 
-$content = IndexController::get_content($item);
+$content = FilesController::get_content($item);
 ?>
 <?php view::begin('content'); ?>
 <!-- <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/11.4.0/styles/dark.min.css"> -->

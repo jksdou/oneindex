@@ -32,9 +32,9 @@ class FilesController
         header("Pragma:no-cache");
 
         if (!empty($this->name)) { //file
-            return $this->file();
+            return $this->file_handler();
         } else { //dir
-            return $this->dir();
+            return $this->dir_handler();
         }
     }
 
@@ -69,24 +69,28 @@ class FilesController
         exit();
     }
 
-    //文件
-    function file()
+    // 文件处理
+    function file_handler()
     {
         $item = $this->items[$this->name];
-        if ($item['folder']) { //是文件夹
+        if ($item['folder']) {
+            // 是文件夹
             $url = $_SERVER['REQUEST_URI'] . '/';
-        } elseif (!is_null($_GET['t'])) { //缩略图
+        } elseif (!is_null($_GET['t'])) {
+            //缩略图
             $url = $this->thumbnail($item);
         } elseif ($_SERVER['REQUEST_METHOD'] == 'GET' || !is_null($_GET['s'])) {
             return $this->show($item);
-        } else { //返回下载链接
+        } else {
+            // 返回下载链接
             $url = $item['downloadUrl'];
         }
+
         header('Location: ' . $url);
     }
 
-    //文件夹
-    function dir()
+    // 文件夹处理
+    function dir_handler()
     {
         $navs = $this->navs();
         // 以'/'拆分路径，并重新连接
@@ -185,7 +189,8 @@ class FilesController
 
         header('Location: ' . $item['downloadUrl']);
     }
-    //缩略图
+
+    // 缩略图
     function thumbnail($item)
     {
         if (!empty($_GET['t'])) {
@@ -198,6 +203,28 @@ class FilesController
         list($item['thumb'], $tmp) = explode('&width=', $item['thumb']);
         $item['thumb'] .= strpos($item['thumb'], '?') ? '&' : '?';
         return $item['thumb'] . "width={$width}&height={$height}";
+    }
+
+    // 文件下载
+    function download()
+    {
+        // 是否404
+        $this->is404();
+
+        $this->is_password();
+
+        header("Expires:-1");
+        header("Cache-Control:no_cache");
+        header("Pragma:no-cache");
+
+        if (!empty($this->name)) {
+            header('Location: ' . $this->items[$this->name]['downloadUrl']);
+        } else {
+            // 不是文件
+            http_response_code(404);
+            view::load('404')->show();
+            die();
+        }
     }
 
     // 文件夹下元素
