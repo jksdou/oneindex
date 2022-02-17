@@ -5,7 +5,7 @@ class AdminController
     static $default_config = array(
         'site_name' => 'OneIndex',
         'password' => 'oneindex',
-        'style' => 'nexmoe',
+        'style' => 'material',
         'onedrive_root' => '',
         'except_path' => '',
         'cache_type' => 'secache',

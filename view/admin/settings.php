@@ -19,7 +19,7 @@
                     $styles[$k] = trim($s, '/');
                 }
                 $styles = array_diff($styles, ['.', '..', 'admin', '.DS_Store']);
-                $style = config('style') ? config('style') : 'nexmoe';
+                $style = config('style') ? config('style') : 'material';
                 $cache_type  = config('cache_type') ? config('cache_type') : 'secache';
                 foreach ($styles as $style_name) :
                 ?>
