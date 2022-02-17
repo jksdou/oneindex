@@ -306,6 +306,6 @@ function file_ico($item)
 </div>
 
 <script src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js"></script>
-<script src="./statics/themes/material/js/list.js"></script>
+<script src="<?php echo ROOT_URL_PATH; ?>statics/themes/material/js/list.js"></script>
 
 <?php view::end('content'); ?>
