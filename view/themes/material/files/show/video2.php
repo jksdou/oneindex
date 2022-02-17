@@ -1,4 +1,4 @@
-<?php view::layout('layout')?>
+<?php view::layout('files/layout')?>
 
 <?php 
 //仅支持教育版和企业版

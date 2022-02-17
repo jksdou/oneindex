@@ -5,8 +5,16 @@
 <div class="mdui-container-fluid">
     <div class="mdui-col-md-6 mdui-col-sm-6 mdui-center" style="float: none;">
         <div class="mdui-text-center">
-            <h4 class="mdui-typo-display-2-opacity">首页</h4>
-            <p>首页</p>
+            <h1 class="mdui-typo-display-3-opacity">OneIndex</h1>
+            <p style="margin-bottom: 50px;">Onedrive Directory Index</p>
+            <div class="actions">
+                <a href="<?php echo ROOT_URL_PATH; ?>files/" class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-theme">
+                    查看文件
+                </a>
+                <a href="https://github.com/doudoudzj/oneindex" class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-theme" target="_blank">
+                    Github
+                </a>
+            </div>
         </div>
     </div>
 </div>

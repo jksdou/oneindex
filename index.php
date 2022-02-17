@@ -117,6 +117,5 @@ route::group(function () {
 route::get('/', 'IndexController@index');
 // 关于
 route::get('/about', 'IndexController@about');
-
-// 公共
-route::any('/{path:#all}', 'IndexController@index');
+// Not Found 其他未定义的路径
+route::any('{path:#all}', 'IndexController@not_found');

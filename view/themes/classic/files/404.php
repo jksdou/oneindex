@@ -16,8 +16,8 @@
 </head>
 
 <body>
-    <h1>Not Found.</h1>
-    <p>The requested URL <?php echo $path; ?> was not found on this server.</p>
+    <h1>未找到</h1>
+    <p>抱歉！您访问的文件不存在。</p>
 </body>
 
 </html>

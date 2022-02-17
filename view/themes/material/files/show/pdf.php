@@ -1,4 +1,4 @@
-<?php view::layout('layout')?>
+<?php view::layout('files/layout')?>
 
 <?php view::begin('content');?>
 	<iframe id="mask" src='<?php echo str_replace('transform/thumbnail?', 'transform/pdf?',$item['thumb']);?>' 

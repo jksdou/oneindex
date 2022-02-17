@@ -7,6 +7,7 @@
     <meta http-equiv="Access-Control-Allow-Origin" content="*" />
     <title>OneIndex 系统管理</title>
     <link rel="stylesheet" href="https://cdn.staticfile.org/mdui/0.4.3/css/mdui.min.css">
+    <link rel="shortcut icon" type="image/x-icon" href="<?php echo ROOT_URL_PATH; ?>favicon.ico" mce_href="<?php echo ROOT_URL_PATH; ?>favicon.ico">
     <style>
         #toolbar-admin-menu {
             margin-top: 50px;

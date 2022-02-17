@@ -65,7 +65,7 @@ class FilesController
             return true;
         }
         $navs = $this->navs();
-        echo view::load('password')->with('navs', $navs);
+        echo view::load('files/password')->with('navs', $navs);
         exit();
     }
 
@@ -77,7 +77,7 @@ class FilesController
             // 是文件夹
             $url = $_SERVER['REQUEST_URI'] . '/';
         } elseif (!is_null($_GET['t'])) {
-            //缩略图
+            // 缩略图
             $url = $this->thumbnail($item);
         } elseif ($_SERVER['REQUEST_METHOD'] == 'GET' || !is_null($_GET['s'])) {
             return $this->show($item);
@@ -158,10 +158,11 @@ class FilesController
         } else {
             $manager['create_folder'] = false;
         }
-        return view::load('list')->with('title', empty(str_replace("/", "", urldecode($this->url_path))) ? "根目录" : str_replace("/", "", urldecode($this->url_path)))
+        return view::load('files/index')->with('title', empty(str_replace("/", "", urldecode($this->url_path))) ? "根目录" : str_replace("/", "", urldecode($this->url_path)))
             ->with('navs', $navs)
             ->with('path', join("/", array_map("rawurlencode", explode("/", $this->url_path))))
             ->with('root', ROOT_URL . 'files/')
+            ->with('download', ROOT_URL . 'download/')
             ->with('items', $this->items)
             ->with('head', $head)
             ->with('readme', $readme)
@@ -183,7 +184,7 @@ class FilesController
         $show = config('show');
         foreach ($show as $n => $exts) {
             if (in_array($ext, $exts)) {
-                return view::load('show/' . $n)->with($data);
+                return view::load('files/show/' . $n)->with($data);
             }
         }
 
@@ -222,7 +223,7 @@ class FilesController
         } else {
             // 不是文件
             http_response_code(404);
-            view::load('404')->show();
+            view::load('files/404')->show();
             die();
         }
     }
@@ -271,7 +272,7 @@ class FilesController
         }
 
         http_response_code(404);
-        view::load('404')->show();
+        view::load('files/404')->show();
         die();
     }
 

@@ -1,4 +1,4 @@
-<?php view::layout('layout')?>
+<?php view::layout('files/layout')?>
 
 <?php 
 $item['thumb'] = onedrive::thumbnail($item['path']);
