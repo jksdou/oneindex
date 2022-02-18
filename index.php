@@ -117,5 +117,9 @@ route::group(function () {
 route::get('/', 'IndexController@index');
 // 关于
 route::get('/about', 'IndexController@about');
+
+// 图床上传接口
+route::post('/api/v1/images/upload','ImagesController@upload');
+
 // Not Found 其他未定义的路径
 route::any('{path:#all}', 'IndexController@not_found');

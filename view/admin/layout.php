@@ -134,7 +134,7 @@
 
     <div style="height: 50px;"></div>
 
-    <script src="./statics/common/js/darkmode.js"></script>
+    <script src="<?php echo ROOT_URL_PATH; ?>statics/common/js/darkmode.js"></script>
 
     <?php if (isset($message) && !empty($message)) : ?>
         <script>

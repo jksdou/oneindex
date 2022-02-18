@@ -22,7 +22,12 @@ class AdminController
             'code' => ['txt', 'html', 'htm', 'xhtml', 'css', 'js', 'json', 'ts', 'php', 'c', 'h', 'cpp', 'py', 'go', 'java', 'sh', 'md', 'ini', 'sql', 'cs', 'tcl', 'env', 'conf', 'prettierrc', 'editorconfig', 'gitignore'],
             'doc' => ['csv', 'doc', 'docx', 'odp', 'ods', 'odt', 'pot', 'potm', 'potx', 'pps', 'ppsx', 'ppsxm', 'ppt', 'pptm', 'pptx', 'rtf', 'xls', 'xlsx']
         ),
-        'images' => ['home' => false, 'public' => false, 'exts' => ['jpg', 'jpeg', 'png', 'gif', 'bmp']],
+        'images' => array(
+            'home' => false,
+            'public' => false,
+            'exts' => ['jpg', 'jpeg', 'png', 'gif', 'bmp'],
+            'auth' => ''
+        ),
         'offline' => array(
             'offline' => false,
             'online' => false,
@@ -135,6 +140,8 @@ class AdminController
             $config['home'] = empty($_POST['home']) ? false : true;
             $config['public'] = empty($_POST['public']) ? false : true;
             $config['exts'] = explode(" ", $_POST['exts']);
+            // API 上传授权码
+            $config['auth'] = $_POST['auth'];
             config('images@base', $config);
         }
         $config = config('images@base');

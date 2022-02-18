@@ -27,11 +27,15 @@
             <h4>允许上传文件类型</h4>
             <input class="mdui-textfield-input" type="text" name="exts" value="<?php echo join(' ', $config['exts']); ?>" />
         </div>
-        <Br>
+        <div class="mdui-textfield">
+            <h4>API 授权码（接口上传会进行校验）</h4>
+            <input class="mdui-textfield-input" type="text" name="auth" value="<?php echo $config['auth']; ?>" />
+            <div class="mdui-textfield-helper">API 地址：<code>POST: <?php echo ROOT_URL; ?>api/v1/images/upload</code></div>
+        </div>
+        <br />
         <button type="submit" class="mdui-btn mdui-color-theme-accent mdui-ripple mdui-float-right">
             <i class="mdui-icon material-icons">save</i> 保存
         </button>
-        <Br>
     </form>
 </div>
 <?php view::end('content'); ?>
