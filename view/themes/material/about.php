@@ -12,7 +12,7 @@
             <p>感谢 OneIndex 原作者的开源共享精神</p>
             <p>感谢 Microsoft 提供的 <a href="https://onedrive.live.com" target="_blank" rel="noopener noreferrer">OneDrive</a> 云存储服务</p>
             <p>感谢 <a href="https://staticfile.org" target="_blank">Staticfile CDN</a> 提供免费快速开放的 CDN 服务</p>
-            <p>感谢 <a href="https://mdui.org" target="_blank">MDUI</a> 为我们提供了 Material Design 前端库</p>
+            <p>感谢 <a href="https://mdui.org" target="_blank">MDUI</a> 提供的 Material Design User Interface 前端库</p>
         </div>
     </div>
 </div>
