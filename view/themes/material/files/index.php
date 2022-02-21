@@ -17,6 +17,65 @@ function file_ico($item)
 ?>
 
 <?php view::begin('content'); ?>
+<style>
+    .thumb .th {
+        display: none;
+    }
+
+    .thumb .mdui-text-right {
+        display: none;
+    }
+
+    .thumb .mdui-list-item a,
+    .thumb .mdui-list-item {
+        width: 217px;
+        height: 230px;
+        float: left;
+        margin: 10px 10px !important;
+    }
+
+    .thumb .mdui-col-xs-12,
+    .thumb .mdui-col-sm-7 {
+        width: 100% !important;
+        height: 230px;
+    }
+
+    .thumb .mdui-list-item .mdui-icon {
+        font-size: 100px;
+        display: block;
+        margin-top: 40px;
+        color: #7ab5ef;
+    }
+
+    .thumb .mdui-list-item span {
+        float: left;
+        display: block;
+        text-align: center;
+        width: 100%;
+        position: absolute;
+        top: 180px;
+    }
+
+    /*loading动画*/
+    .simple-spinner {
+        height: 100%;
+        border: 8px solid rgba(150, 150, 150, 0.2);
+        border-radius: 50%;
+        border-top-color: rgb(150, 150, 150);
+        animation: rotate 1s 0s infinite ease-in-out alternate;
+    }
+
+    @keyframes rotate {
+        0% {
+            transform: rotate(0);
+        }
+
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+</style>
+
 <?php if (is_login()) : ?>
     <div class="mdui-container-fluid file-list-toolbar">
         <button class="mdui-btn mdui-ripple" mdui-menu="{target: '#file_upload-menu'}">上传文件</button>
@@ -49,142 +108,80 @@ function file_ico($item)
 <div class="mdui-divider"></div>
 
 <div class="mdui-container-fluid file-list-page">
-
     <?php if ($head) : ?>
         <div class="mdui-typo" style="padding: 20px;">
             <?php e($head); ?>
         </div>
     <?php endif; ?>
-
-    <style>
-        .thumb .th {
-            display: none;
-        }
-
-        .thumb .mdui-text-right {
-            display: none;
-        }
-
-        .thumb .mdui-list-item a,
-        .thumb .mdui-list-item {
-            width: 217px;
-            height: 230px;
-            float: left;
-            margin: 10px 10px !important;
-        }
-
-        .thumb .mdui-col-xs-12,
-        .thumb .mdui-col-sm-7 {
-            width: 100% !important;
-            height: 230px;
-        }
-
-        .thumb .mdui-list-item .mdui-icon {
-            font-size: 100px;
-            display: block;
-            margin-top: 40px;
-            color: #7ab5ef;
-        }
-
-        .thumb .mdui-list-item span {
-            float: left;
-            display: block;
-            text-align: center;
-            width: 100%;
-            position: absolute;
-            top: 180px;
-        }
-
-        /*loading动画*/
-        .simple-spinner {
-            height: 100%;
-            border: 8px solid rgba(150, 150, 150, 0.2);
-            border-radius: 50%;
-            border-top-color: rgb(150, 150, 150);
-            animation: rotate 1s 0s infinite ease-in-out alternate;
-        }
-
-        @keyframes rotate {
-            0% {
-                transform: rotate(0);
-            }
-
-            100% {
-                transform: rotate(360deg);
-            }
-        }
-    </style>
-    <div class="nexmoe-item">
-        <div class="mdui-row">
-            <ul class="mdui-list">
-                <li class="mdui-list-item th" id="indexsort" style="background-color: initial;">
-                    <?php if (is_login()) : ?>
-                        <label class="mdui-checkbox"><input type="checkbox" value="" id="checkall" onclick="checkall()"><i class="mdui-checkbox-icon"></i></label>
-                    <?php endif; ?>
-                    <div class="mdui-col-lg-7 mdui-col-md-7 mdui-col-sm-10">文件 <i class="mdui-icon material-icons icon-sort" data-sort="name" data-order="downward">expand_more</i></div>
-                    <div class="mdui-col-lg-1 mdui-col-md-2 mdui-col-sm-2 mdui-hidden-xs mdui-text-right">大小 <i class="mdui-icon material-icons icon-sort" data-sort="size" data-order="downward">expand_more</i></div>
-                    <div class="mdui-col-lg-2 mdui-col-md-3 mdui-hidden-sm-down mdui-text-right">修改时间 <i class="mdui-icon material-icons icon-sort" data-sort="date" data-order="downward">expand_more</i></div>
-                    <div class="mdui-col-lg-2 mdui-hidden-md-down mdui-text-right">创建时间 <i class="mdui-icon material-icons icon-sort" data-sort="date" data-order="downward">expand_more</i></div>
+    <div class="mdui-row">
+        <ul class="mdui-list files-list">
+            <li class="mdui-list-item th" id="indexsort" style="background-color: initial;">
+                <?php if (is_login()) : ?>
+                    <label class="mdui-checkbox"><input type="checkbox" value="" id="checkall" onclick="checkall()"><i class="mdui-checkbox-icon"></i></label>
+                <?php endif; ?>
+                <div class="mdui-col-lg-7 mdui-col-md-7 mdui-col-sm-10">文件 <i class="mdui-icon material-icons icon-sort" data-sort="name" data-order="downward">expand_more</i></div>
+                <div class="mdui-col-lg-1 mdui-col-md-2 mdui-col-sm-2 mdui-hidden-xs mdui-text-right">大小 <i class="mdui-icon material-icons icon-sort" data-sort="size" data-order="downward">expand_more</i></div>
+                <div class="mdui-col-lg-2 mdui-col-md-3 mdui-hidden-sm-down mdui-text-right">修改时间 <i class="mdui-icon material-icons icon-sort" data-sort="date" data-order="downward">expand_more</i></div>
+                <div class="mdui-col-lg-2 mdui-hidden-md-down mdui-text-right">创建时间 <i class="mdui-icon material-icons icon-sort" data-sort="date" data-order="downward">expand_more</i></div>
+            </li>
+            <?php if ($path != '/') : ?>
+                <li class="mdui-list-item mdui-ripple" id="backtolast">
+                    <a href="<?php echo get_absolute_path($root . $path . '../'); ?>">
+                        <div class="mdui-col-md-12">
+                            <i class="mdui-icon material-icons">arrow_upward</i>
+                            ..
+                        </div>
+                    </a>
                 </li>
-                <?php if ($path != '/') : ?>
-                    <li class="mdui-list-item mdui-ripple" id="backtolast">
-                        <a href="<?php echo get_absolute_path($root . $path . '../'); ?>">
-                            <div class="mdui-col-md-12">
-                                <i class="mdui-icon material-icons">arrow_upward</i>
-                                ..
+            <?php endif; ?>
+
+            <li class="mdui-list-item mdui-ripple filter" id="pending" style="display:none;">
+                <div class="simple-spinner" id="loading"></div>文件加载中~~~
+            </li>
+
+            <?php foreach ((array)$items as $item) : ?>
+                <?php if (!empty($item['folder'])) : ?>
+                    <li class="mdui-list-item mdui-ripple filter" data-sort data-sort-name="<?php echo $item['name']; ?>" data-sort-size="<?php echo $item['size']; ?>" data-sort-date="<?php echo $item['lastModifiedDateTime']; ?>" data-sort-created="<?php echo $item['createdDateTime']; ?>" id="<?php echo $item["id"] ?>">
+                        <div class="simple-spinner loading-gif" style="display: none;"></div>
+                        <?php if (is_login()) : ?>
+                            <label class="mdui-checkbox">
+                                <input type="checkbox" value="<?php echo $item["id"] ?>" name="itemid" onclick="onClickHander()">
+                                <i class="mdui-checkbox-icon"></i>
+                            </label>
+                        <?php endif; ?>
+                        <a href="<?php echo get_absolute_path($root . $path . rawurlencode($item['name'])); ?>">
+                            <div class="mdui-col-lg-7 mdui-col-md-7 mdui-col-sm-10 mdui-text-truncate">
+                                <i class="mdui-icon material-icons fileitem">folder_open</i>
+                                <span><?php echo $item['name']; ?></span>
                             </div>
+                            <div class="mdui-col-lg-1 mdui-col-md-2 mdui-col-sm-2 mdui-hidden-xs mdui-text-right"><?php echo onedrive::human_filesize($item['size']); ?></div>
+                            <div class="mdui-col-lg-2 mdui-col-md-3 mdui-hidden-sm-down mdui-text-right"><?php echo date("Y-m-d H:i:s", $item['lastModifiedDateTime']); ?></div>
+                            <div class="mdui-col-lg-2 mdui-hidden-md-down mdui-text-right"><?php echo date("Y-m-d H:i:s", $item['createdDateTime']); ?></div>
+                        </a>
+                    </li>
+                <?php else : ?>
+                    <li class="mdui-list-item file mdui-ripple filter" data-sort data-sort-name="<?php echo $item['name']; ?>" data-sort-size="<?php echo $item['size']; ?>" data-sort-date="<?php echo $item['lastModifiedDateTime']; ?>" data-sort-created="<?php echo $item['createdDateTime']; ?>" id="<?php echo $item["id"] ?>">
+                        <div class="simple-spinner loading-gif" style="display: none;"></div>
+                        <?php if (is_login()) : ?>
+                            <label class="mdui-checkbox">
+                                <input type="checkbox" value="<?php echo $item["id"] ?>" name="itemid" onclick="onClickHander()">
+                                <i class="mdui-checkbox-icon"></i>
+                            </label>
+                        <?php endif; ?>
+                        <a href="<?php echo get_absolute_path($root . $path) . rawurlencode($item['name']); ?>">
+                            <div class="mdui-col-lg-7 mdui-col-md-7 mdui-col-sm-10 mdui-text-truncate">
+                                <i class="mdui-icon material-icons fileitem"><?php echo file_ico($item); ?></i>
+                                <span><?php e($item['name']); ?></span>
+                            </div>
+                            <div class="mdui-col-lg-1 mdui-col-md-2 mdui-col-sm-2 mdui-hidden-xs mdui-text-right"><?php echo onedrive::human_filesize($item['size']); ?></div>
+                            <div class="mdui-col-lg-2 mdui-col-md-3 mdui-hidden-sm-down mdui-text-right"><?php echo date("Y-m-d H:i:s", $item['lastModifiedDateTime']); ?></div>
+                            <div class="mdui-col-lg-2 mdui-hidden-md-down mdui-text-right"><?php echo date("Y-m-d H:i:s", $item['createdDateTime']); ?></div>
                         </a>
                     </li>
                 <?php endif; ?>
 
-                <li class="mdui-list-item mdui-ripple filter" id="pending" style="display:none;">
-                    <div class="simple-spinner" id="loading"></div>文件加载中~~~
-                </li>
-
-                <?php foreach ((array)$items as $item) : ?>
-                    <?php if (!empty($item['folder'])) : ?>
-                        <li class="mdui-list-item mdui-ripple filter" data-sort data-sort-name="<?php echo $item['name']; ?>" data-sort-size="<?php echo $item['size']; ?>" data-sort-date="<?php echo $item['lastModifiedDateTime']; ?>" data-sort-created="<?php echo $item['createdDateTime']; ?>" id="<?php echo $item["id"] ?>">
-                            <div class="simple-spinner loading-gif" style="display: none;"></div>
-                            <?php if (is_login()) : ?>
-                                <label class="mdui-checkbox">
-                                    <input type="checkbox" value="<?php echo $item["id"] ?>" name="itemid" onclick="onClickHander()">
-                                    <i class="mdui-checkbox-icon"></i>
-                                </label>
-                            <?php endif; ?>
-                            <a href="<?php echo get_absolute_path($root . $path . rawurlencode($item['name'])); ?>">
-                                <div class="mdui-col-lg-7 mdui-col-md-7 mdui-col-sm-10 mdui-text-truncate">
-                                    <i class="mdui-icon material-icons fileitem">folder_open</i>
-                                    <span><?php echo $item['name']; ?></span>
-                                </div>
-                                <div class="mdui-col-lg-1 mdui-col-md-2 mdui-col-sm-2 mdui-hidden-xs mdui-text-right"><?php echo onedrive::human_filesize($item['size']); ?></div>
-                                <div class="mdui-col-lg-2 mdui-col-md-3 mdui-hidden-sm-down mdui-text-right"><?php echo date("Y-m-d H:i:s", $item['lastModifiedDateTime']); ?></div>
-                                <div class="mdui-col-lg-2 mdui-hidden-md-down mdui-text-right"><?php echo date("Y-m-d H:i:s", $item['createdDateTime']); ?></div>
-                            </a>
-                        </li>
-                    <?php else : ?>
-                        <li class="mdui-list-item file mdui-ripple filter" data-sort data-sort-name="<?php echo $item['name']; ?>" data-sort-size="<?php echo $item['size']; ?>" data-sort-date="<?php echo $item['lastModifiedDateTime']; ?>" data-sort-created="<?php echo $item['createdDateTime']; ?>" id="<?php echo $item["id"] ?>">
-                            <div class="simple-spinner loading-gif" style="display: none;"></div>
-                            <?php if (is_login()) : ?>
-                                <label class="mdui-checkbox">
-                                    <input type="checkbox" value="<?php echo $item["id"] ?>" name="itemid" onclick="onClickHander()">
-                                    <i class="mdui-checkbox-icon"></i>
-                                </label>
-                            <?php endif; ?>
-                            <a href="<?php echo get_absolute_path($root . $path) . rawurlencode($item['name']); ?>">
-                                <div class="mdui-col-lg-7 mdui-col-md-7 mdui-col-sm-10 mdui-text-truncate">
-                                    <i class="mdui-icon material-icons fileitem"><?php echo file_ico($item); ?></i>
-                                    <span><?php e($item['name']); ?></span>
-                                </div>
-                                <div class="mdui-col-lg-1 mdui-col-md-2 mdui-col-sm-2 mdui-hidden-xs mdui-text-right"><?php echo onedrive::human_filesize($item['size']); ?></div>
-                                <div class="mdui-col-lg-2 mdui-col-md-3 mdui-hidden-sm-down mdui-text-right"><?php echo date("Y-m-d H:i:s", $item['lastModifiedDateTime']); ?></div>
-                                <div class="mdui-col-lg-2 mdui-hidden-md-down mdui-text-right"><?php echo date("Y-m-d H:i:s", $item['createdDateTime']); ?></div>
-                            </a>
-                        </li>
-                    <?php endif; ?>
-
-                <?php endforeach; ?>
-            </ul>
-        </div>
+            <?php endforeach; ?>
+        </ul>
     </div>
     <?php if ($readme) : ?>
         <div class="mdui-typo mdui-shadow-3" style="padding: 20px;margin: 20px; ">
@@ -272,7 +269,7 @@ function file_ico($item)
 
 <div class="mdui-dialog" id="search_form">
     <div class="mdui-dialog-content">
-        <form action="?/search" method="post">
+        <form action="<?php echo ROOT_URL; ?>search" method="post">
             <div class="mdui-textfield mdui-textfield-floating-label">
                 <label class="mdui-textfield-label">输入关键词</label>
                 <input class="mdui-textfield-input" type="text" style="margin: 20px 0;" name="keyword" />

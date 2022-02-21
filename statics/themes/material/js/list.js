@@ -41,12 +41,12 @@ function downall() {
 function thumb() {
     if ($('#format_list').text() == 'apps') {
         $('#format_list').text('format_list_bulleted')
-        $('.nexmoe-item').removeClass('thumb')
-        $('.nexmoe-item .mdui-icon').show()
-        $('.nexmoe-item .mdui-list-item').css('background', '')
+        $('.files-list').removeClass('thumb')
+        $('.files-list .mdui-icon').show()
+        $('.files-list .mdui-list-item').css('background', '')
     } else {
         $('#format_list').text('apps')
-        $('.nexmoe-item').addClass('thumb')
+        $('.files-list').addClass('thumb')
         $('i.mdui-icon.fileitem').each(function () {
             if ($(this).text() == 'image' || $(this).text() == 'ondemand_video') {
                 var href = $(this).parent().parent().attr('href')
